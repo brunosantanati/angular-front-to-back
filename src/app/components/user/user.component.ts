@@ -14,24 +14,23 @@ import { Component } from '@angular/core';
 
 export class UserComponent {
   // Properties
-  firstName = 'John';
-  lastName = 'Doe';
-  age = 30;
+  firstName = 'Bruno';
+  lastName = 'Sant\' Ana';
+  age = 32;
+  address = {
+    street: '50 Main st',
+    city: 'Boston',
+    state: 'MA'
+  };
 
   // Methods
   constructor() {
-    this.sayHello();
-    console.log(this.age);
-    this.hasBirthday();
-    console.log(this.age);
+    
   }
 
-  sayHello() {
-    console.log(`Hello ${this.firstName}`);
+  showAge() {
+    return this.age + 2;
   }
 
-  hasBirthday() {
-    this.age += 1;
-  }
 
 }
