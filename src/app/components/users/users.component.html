@@ -1,6 +1,37 @@
-<h2>Users</h2>
+<button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">Add User</button>
 
-<button (click)="addUser({firstName: 'Mary', lastName: 'Jackson', isActive: true})" [disabled]="!enableAdd" class="bt btn-block mb-3">Add New User</button>
+<div class="card card-body mb-3" *ngIf="showUserForm">
+    <h2>Add User</h2>
+    <form (submit)="onSubmit($event)">
+        <div class="form-group">
+            <label>First Name</label>
+            <input (keydown)="fireEvent($event)" type="text" class="form-control" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastName">
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" class="form-control" name="age">
+        </div>
+        <div class="form-group">
+            <label>Street Address</label>
+            <input type="text" class="form-control" name="street">
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" name="city">
+        </div>
+        <div class="form-group">
+            <label>State</label>
+            <input type="text" class="form-control" name="state">
+        </div>
+        
+        <button (click)="addUser({firstName: 'Mary', lastName: 'Jackson', isActive: true})" [disabled]="!enableAdd" class="bt btn-block mb-3">Add New User</button>
+    </form>
+</div>
 
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
     <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive">
