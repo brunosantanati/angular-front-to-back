@@ -67,8 +67,4 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
-  toggleHide(user: User){
-    user.hide = !user.hide;
-  }
-
 }
