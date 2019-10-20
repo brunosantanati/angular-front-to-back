@@ -6,7 +6,11 @@
     <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive">
         <h3>
             {{ user.firstName }} {{ user.lastName }}
-            <small><button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm">Toggle</button></small>
+            <small *ngIf="user.age && user.address">
+                <button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm">
+                    <i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i>
+                </button>
+            </small>
         </h3>
         <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
             <li class="list-group-item">Age: {{ user.age }}</li>
