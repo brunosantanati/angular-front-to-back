@@ -1,52 +1,17 @@
 <h2>Users</h2>
 
-<button [disabled]="!enableAdd" class="bt btn-block mb-3" [ngClass]="currentClasses">Add New User</button>
+<button [disabled]="!enableAdd" class="bt btn-block mb-3">Add New User</button>
 
-<!-- <ul *ngIf="loaded && users.length > 0;else noUsers"> -->
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
-    <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive" [style.border-color]="user.isActive ? 'green' : ''">
-
-        <div class="row">
-            <div class="col-sm-4">
-                <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt="">
-                <!-- <img *ngIf="user.image" class="img-fluid" src="{{user.image}}" alt=""> -->
-                <!-- <img *ngIf="user.image" class="img-fluid" bind-src="user.image" alt=""> -->
-            </div>
-            <div class="col-sm-8">
-                <h3 [ngStyle]="currentStyles">
-                    <!-- <span [textContent]="user.firstName"></span>  --> 
-                    {{ user.firstName | uppercase }}
-                    {{ user.lastName | lowercase }}
-                </h3>
-                <ul class="list-group" *ngIf="showExtended && user.age && user.address">
-                    <li class="list-group-item">Age: {{ user.age }}</li>
-                    <li class="list-group-item">Address: {{ user.address.street }} {{ user.address.city }}, {{ user.address.state }}</li>
-                    <li class="list-group-item">Balance: {{ user.balance | currency }} until <!--{{ 1 | percent }}--> {{ .5 | percent }}</li>
-                    <!-- <li class="list-group-item">Balance: {{ user.balance | currency:"GBP" }}</li>
-                    <li class="list-group-item">Balance: {{ user.balance | currency:"BRL" }}</li>
-                    <li class="list-group-item">Balance: {{ user.balance | currency:"R$":"code" }}</li>
-                    <li class="list-group-item">Balance: {{ user.balance | currency:"GBP":"symbol" }}</li> -->
-                    <li class="list-group-item">Joined: {{ user.registered | date }}</li>
-                    <!-- <li class="list-group-item">Joined: {{ user.registered | date:"mm/dd/yyyy" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"yyyy" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"shortDate" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"longDate" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"fullDate" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"shortTime" }}</li>
-                    <li class="list-group-item">Joined: {{ user.registered | date:"longTime" }}</li> -->
-                    <li class="list-group-item">{{ 5 | number:"1.2" }}</li>
-                    <!-- <li class="list-group-item">{{ 5 | number:"2.2" }}</li>
-                    <li class="list-group-item">{{ 5 | number:"1.4" }}</li> -->
-                    <li class="list-group-item" ngNonBindable>{{ 5 | number:"1.4" }}</li>
-                </ul>
-            </div>
-        </div>
-
-
+    <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive">
+        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+            <li class="list-group-item">Age: {{ user.age }}</li>
+            <li class="list-group-item">Address: {{ user.address.street }} {{ user.address.city }}, {{ user.address.state }}</li>
+            <li class="list-group-item">Joined: {{ user.registered | date }}</li>
+        </ul>
     </li>
 </ul>
-
-<!-- <ng-template #noUsers><h4>No Users Found</h4></ng-template> -->
 
 <h4 *ngIf="users?.length == 0">No Users Found</h4>
 
