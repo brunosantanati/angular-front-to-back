@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component'
-import { DataService } from './services/data.service'
+import { UserService } from './services/user.service'
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { DataService } from './services/data.service'
     FormsModule
   ],
   providers: [
-    DataService
+    UserService
   ],
   bootstrap: [AppComponent]
 })
