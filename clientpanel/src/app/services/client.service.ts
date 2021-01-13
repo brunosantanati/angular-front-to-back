@@ -31,4 +31,8 @@ export class ClientService {
     return this.clients;
   }
 
+  newClient(client: Client){
+    this.clientsCollection.add(client);
+  }
+
 }
