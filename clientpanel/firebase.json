@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "clientpanel",
+      "public": "dist/clientpanel",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

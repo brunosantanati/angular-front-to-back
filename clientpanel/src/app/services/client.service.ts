@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
 import { Client } from '../modules/Client';
 
 @Injectable({
@@ -19,14 +20,13 @@ export class ClientService {
 
   getClients(): Observable<Client[]>{
     // Get clients with the id
-    this.clients = this.clientsCollection.snapshotChanges()
-    .map(changes => {
+    this.clients = this.clientsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as Client;
-        data.id = action.payload.doc.id;
+        data.id = action.payload.doc['id'];
         return data;
       });
-    });
+    }));
 
     return this.clients;
   }
