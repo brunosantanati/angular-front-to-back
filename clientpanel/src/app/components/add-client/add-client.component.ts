@@ -3,6 +3,7 @@ import { Client } from '../../models/Client';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ClientService } from '../../services/client.service';
 import { Router } from '@angular/router';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-add-client',
@@ -19,16 +20,18 @@ export class AddClientComponent implements OnInit {
     balance: 0
   }
 
-  disableBalanceOnAdd: boolean = true;
+  disableBalanceOnAdd: boolean;
   @ViewChild('clientForm') form: any;
 
   constructor(
     private flashMessage: FlashMessagesService,
     private clientService: ClientService,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit(): void {
+    this.disableBalanceOnAdd = this.settingsService.getSettings().disableBalanceOnAdd;
   }
 
   onSubmit({value, valid}: {value: Client, valid: boolean}){

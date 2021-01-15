@@ -110,6 +110,7 @@
                     [(ngModel)]="client.balance"
                     name="balance"
                     #clientBalance = "ngModel"
+                    [disabled]="disableBalanceOnEdit"
                 >
             </div>
       
