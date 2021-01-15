@@ -21,6 +21,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ClientService } from './services/client.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [
+    ClientService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
