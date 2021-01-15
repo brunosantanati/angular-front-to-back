@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "clientpanelprod-662e0": {
-      "hosting": {
-        "clientpanel": [
-          "clientpanelprod-662e0"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "clientpanelprod-662e0"
   }
